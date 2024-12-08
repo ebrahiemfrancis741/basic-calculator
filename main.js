@@ -20,31 +20,74 @@ function divide(a, b){
 }
 
 function operate(a, b, operator){
-
+  let result;
   switch(operator){
     case "+":
-      return add(a, b);
+      console.log(`before add: a = ${a}, b = ${b}`);
+      result = add(a, b);
+      console.log(`add result: ${result}, a = ${a}, b = ${b}`);
+      if(!Number.isInteger(result)){
+        result = result.toFixed(4);
+        result = parseFloat(result);
+      }
+      return result;
     case "-":
-      return subtract(a, b);
+      console.log(`before subtract: a = ${a}, b = ${b}`);
+      result = subtract(a, b);
+      console.log(`subtract result: ${result}, a = ${a}, b = ${b}`);
+      if(!Number.isInteger(result)){
+        result = result.toFixed(4);
+        result = parseFloat(result);
+      }
+      return result;
     case "*":
-      return multiply(a, b);
+      console.log(`before multiply: a = ${a}, b = ${b}`);
+      result = multiply(a, b);
+      console.log(`multiply result: ${result}, a = ${a}, b = ${b}`);
+      if(!Number.isInteger(result)){
+        result = result.toFixed(4);
+        result = parseFloat(result);
+      }
+      return result;
     case "/":
-      return divide(a, b);
+      if(b == 0){
+        alert("Please don't divide by zero");
+        return;
+      }
+      console.log(`before divide: a = ${a}, b = ${b}`);
+      result = divide(a, b);
+      console.log(`divide result: ${result}, a = ${a}, b = ${b}`);
+      if(!Number.isInteger(result)){
+        result = result.toFixed(4);
+        result = parseFloat(result);
+      }
+      return result;
     default:
       return "Error? Incorrect operator";
   }
   
 }
-
+/*
+  get first operand if no operand was already typed else get the second
+*/
 function getOperand(){
   let display = document.querySelector(".display");
   if(operation == ""){
-    operand1 = parseInt(display.textContent);
-    console.log(`operand1 : ${operand1}`);
+    if(display.textContent.includes(".")){
+      operand1 = parseFloat(display.textContent);
+    }
+    else{
+      operand1 = parseInt(display.textContent);
+    }
   }
   else{
-    operand2 = parseInt(display.textContent.split(operation)[1]);
-    console.log(`operand2 : ${operand2}`);
+    operand2 = display.textContent.split(operation)[1];
+    if(operand2.includes(".")){
+      operand1 = parseFloat(operand2);
+    }
+    else{
+      operand2 = parseInt(operand2);
+    }
   }
 }
 
