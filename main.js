@@ -100,6 +100,10 @@ function addButtonEventListener(){
   calculator.addEventListener("click", (event) => {
     button = event.target;
 
+    if(operation != "" && display.textContent.split(operation).length == 2){
+      document.querySelector("#equal").disabled = false;
+    }
+
     switch(button.id){
       case "0":
         display.textContent += "0";
@@ -169,6 +173,7 @@ function addButtonEventListener(){
         getOperand();
         display.textContent = operate(operand1, operand2, operation);
         operation = "";
+        document.querySelector("#equal").disabled = true;
         break;
     }
 
