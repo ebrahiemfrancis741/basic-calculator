@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: rgb(228, 228, 228);
+}
+
 .calculator-container{
   width: 300px;
   height: 500px;
@@ -31,7 +35,7 @@
   font-size: 16px;
   border-top: 1px solid gray;
   border-right: 1px solid gray;
-  /* border-radius: 2px; */
+  border-radius: 4px;
   letter-spacing: 1px;
   background-color: lightgray;
 }
@@ -63,4 +67,5 @@
   border-bottom: 2px solid green;
   height: 50px;
   padding-right: 4px;
+  background-color: white;
 }
