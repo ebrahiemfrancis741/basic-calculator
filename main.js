@@ -164,6 +164,11 @@ function addButtonEventListener(){
         }
         break;
       case "clear":
+        operand1 = 0;
+        operand2 = 0;
+        operation = "";
+        display.textContent = "";
+        document.querySelector("#equal").disabled = true;
         break;
       case "backspace":
         break;
