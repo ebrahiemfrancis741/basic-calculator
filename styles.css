@@ -22,8 +22,9 @@ body{
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  border: 4px solid green;
-  border-radius: 2px;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 8px;
 }
 
 .buttons button{
@@ -33,15 +34,14 @@ body{
   border: 0;
   font-weight: 700;
   font-size: 16px;
-  border-top: 1px solid gray;
-  border-right: 1px solid gray;
+  border: 1px solid gray;
   border-radius: 4px;
   letter-spacing: 1px;
   background-color: lightgray;
 }
 
 .buttons button:hover{
-  background-color: green;
+  background-color: black;
   color: white;
 }
 
@@ -50,6 +50,10 @@ body{
 }
 
 .buttons #equal{
+  width: 150px;
+}
+
+.buttons #divide{
   width: 150px;
 }
 
@@ -64,7 +68,8 @@ body{
   font-weight: 700;
   font-size: 16px;
   letter-spacing: 1px;
-  border-bottom: 2px solid green;
+  border: 2px solid black;
+  /* border-bottom: 2px solid black; */
   height: 50px;
   padding-right: 4px;
   background-color: white;

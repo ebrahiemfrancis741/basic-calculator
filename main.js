@@ -189,9 +189,6 @@ function addButtonEventListener(){
         dotUsable = true;
         document.querySelector("#dot").disabled = false;
         break;
-      case "backspace":
-        alert("Backspace not yet implemented");
-        break;
       case "dot":
         if(dotUsable){
           display.textContent += ".";
