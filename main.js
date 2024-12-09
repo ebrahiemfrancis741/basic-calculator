@@ -2,6 +2,7 @@
 let operand1;
 let operand2;
 let operation = "";
+let dotUsable = true;
 
 function add(a, b){
   return a + b;
@@ -83,12 +84,13 @@ function getOperand(){
   else{
     operand2 = display.textContent.split(operation)[1];
     if(operand2.includes(".")){
-      operand1 = parseFloat(operand2);
+      operand2 = parseFloat(operand2);
     }
     else{
       operand2 = parseInt(operand2);
     }
   }
+  dotUsable = true;
 }
 
 function addButtonEventListener(){
@@ -102,6 +104,13 @@ function addButtonEventListener(){
 
     if(operation != "" && display.textContent.split(operation).length == 2){
       document.querySelector("#equal").disabled = false;
+    }
+
+    if(!dotUsable){
+      document.querySelector("#dot").disabled = true;
+    }
+    else{
+      document.querySelector("#dot").disabled = false;
     }
 
     switch(button.id){
@@ -140,6 +149,8 @@ function addButtonEventListener(){
           getOperand();
           operation = "+";
           display.textContent += "+"
+          document.querySelector("#dot").disabled = false;
+          dotUsable = true;
         }
         break;
       case "subtract":
@@ -147,6 +158,8 @@ function addButtonEventListener(){
           getOperand();
           operation = "-";
           display.textContent += "-"
+          document.querySelector("#dot").disabled = false;
+          dotUsable = true;
         }
         break;
       case "multiply":
@@ -154,6 +167,8 @@ function addButtonEventListener(){
           getOperand();
           operation = "*";
           display.textContent += "*"
+          document.querySelector("#dot").disabled = false;
+          dotUsable = true;
         }
         break;
       case "divide":
@@ -161,6 +176,8 @@ function addButtonEventListener(){
           getOperand();
           operation = "/";
           display.textContent += "/"
+          document.querySelector("#dot").disabled = false;
+          dotUsable = true;
         }
         break;
       case "clear":
@@ -169,16 +186,25 @@ function addButtonEventListener(){
         operation = "";
         display.textContent = "";
         document.querySelector("#equal").disabled = true;
+        dotUsable = true;
+        document.querySelector("#dot").disabled = false;
         break;
       case "backspace":
         break;
       case "dot":
+        if(dotUsable){
+          display.textContent += ".";
+          dotUsable = false;
+          document.querySelector("#dot").disabled = true;
+        }
         break;
       case "equal":
         getOperand();
         display.textContent = operate(operand1, operand2, operation);
         operation = "";
         document.querySelector("#equal").disabled = true;
+        document.querySelector("#dot").disabled = false;
+        dotUsable = true;        
         break;
     }
 
